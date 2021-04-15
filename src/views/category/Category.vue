@@ -131,6 +131,6 @@ export default {
   height: 100%;
 }
 .right {
-  flex: 4;
+  flex: 5;
 }
 </style>

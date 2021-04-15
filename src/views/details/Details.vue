@@ -128,10 +128,13 @@ export default {
   methods: {
     getDetailsData(id) {
       getDetailsData(id).then((res) => {
-        //console.log(res.result);
+        console.log(res.result);
         const result = res.result;
         //轮播图图片数据
-        this.swiperImage = result.itemInfo.topImages;
+        result.itemInfo.topImages.forEach((item) => {
+          this.swiperImage.push("http:" + item);
+        });
+        //console.log(this.swiperImage);
         // 商品信息数据
         this.goodsInfo = new DetailGoods(
           result.itemInfo,
@@ -142,6 +145,9 @@ export default {
         this.shopInfo = new Shop(result.shopInfo);
         //展示数据
         this.itemInfo.desc = result.detailInfo.desc;
+        result.detailInfo.detailImage[0].list.forEach((item, index, arr) => {
+          arr[index] = "http:" + arr[index];
+        });
         this.itemInfo.data = result.detailInfo.detailImage[0];
         //参数信息
         this.paramsInfo = new Params(result.itemParams);

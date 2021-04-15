@@ -136,7 +136,7 @@ export default {
     getHomeGoods(type, page) {
       getHomeGoods(type, page).then((res) => {
         this.goods[type].list.push(...res.data.list);
-        //console.log(this.goods[type].list);
+        console.log(this.goods[type].list);
         page++;
       });
     },
